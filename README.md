@@ -1,5 +1,5 @@
 # SummaTRON-API
-API de acceso a la identificación creada por SummaTRON, tipo 2FA y basado en el Blockchain de TRON
+API de acceso al sistema de identificación creada por SummaTRON, tipo 2FA y basado en el Blockchain de TRON
 
 Para incorporar el API debe incluir las instrucciones
 
