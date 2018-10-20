@@ -12,16 +12,15 @@ En en BODY en en el lugar donde quiera que aparezca los QR para realizar el cont
 
 	<div id="PanelPago" style="display:block;"></div> //Con el css se controla cuando debe estar visible y cuando no.
   
-  Al final del HTmL se incorpora el código <br>
+  Al final del HTML se incorpora el código <br>
   
-  <script>
-  $("#PanelPago").load("/api/PanelPago.html", function() {
-    sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-    $("#Propietario").text(sCuenta);
-    Verificar(sCuenta,"FUNCION a EJECUTAR");
-  });
-  </script>
-  
+       <script>
+       $("#PanelPago").load("/api/PanelPago.html", function() {
+       sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+       $("#Propietario").text(sCuenta);
+       Verificar(sCuenta,"FUNCION a EJECUTAR");
+       });
+       </script>
   <br>
   <p>
   Con este script se muestra el QR y se indica cual es la cuenta TRON de la empresa.
