@@ -25,7 +25,7 @@ En en BODY en en el lugar donde quiera que aparezca los QR para realizar el cont
   <p>
   Con este script se muestra el QR y se indica cual es la cuenta TRON de la empresa.
   En FUNCION a EJECUTAR de debe indicar el nombre de la funcion que se ejecutará cuando la identificación finalice, se devuelve como
-  parámetro la cuenta TRON o un string vacio, ni tras 60 segundos ha se ha producido la identificación.
+  parámetro la cuenta TRON o un string vacio, si tras 60 segundos ha se ha producido la identificación.
   </p>
   <p>
   <b>MUY IMPORTANTE</b><br><br>
