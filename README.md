@@ -4,20 +4,25 @@ API de acceso al sistema de identificación creada por SummaTRON, tipo 2FA y bas
 Para incorporar el API debe incluir las instrucciones
 
 En el  HEAD <br>
-	<script src="qrcode.min.js" ></script> // es un desarrollo que puedes descargar de https://github.com/davidshimjs/qrcodejs<br>
+
+	<script src="qrcode.min.js" ></script> // es un desarrollo de https://github.com/davidshimjs/qrcodejs
 	<script src="/api/js/apisummatron.js" ></script><br>
 
 En en BODY en en el lugar donde quiera que aparezca los QR para realizar el control de entrada<br>
 
 	<div id="PanelPago" style="display:block;"></div> //Con el css se controla cuando debe estar visible y cuando no.
   
-  Al final del Html se incorpora el <script><br>
+  Al final del HTmL se incorpora el código <br>
   
-  $("#PanelPago").load("/api/PanelPago.html", function() {<br>
-    sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";<br>
-    $("#Propietario").text(sCuenta);<br>
-    Verificar(sCuenta,"FUNCION a EJECUTAR");<br>
-  });<br>
+  <script>
+  $("#PanelPago").load("/api/PanelPago.html", function() {
+    sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    $("#Propietario").text(sCuenta);
+    Verificar(sCuenta,"FUNCION a EJECUTAR");
+  });
+  </script>
+  
+  <br>
   <p>
   Con este script se muestra el QR y se indica cual es la cuenta TRON de la empresa.
   En FUNCION a EJECUTAR de debe indicar el nombre de la funcion que se ejecutará cuando la identificación finalice, se devuelve como
