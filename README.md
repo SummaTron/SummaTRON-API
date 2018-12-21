@@ -1,7 +1,7 @@
 # SummaTRON-API
-API de acceso al sistema de identificación creada por SummaTRON, tipo 2FA y basado en el Blockchain de TRON
+API for identification, data registration or signing of documents, the identification is like 2FA, and all is supported by TRON Blockchain.
 
-For implementing the API, you must to insert following lines
+For implementing the API, you must to insert following lines:
 
 In the HEAD <br>
 
@@ -10,7 +10,7 @@ In the HEAD <br>
 
 In the BODY, in the place where you want to show the QR<br>
 
-	<div id="PanelPago" style="display:block;"></div> //Con el css se controla cuando debe estar visible y cuando no.
+	<div id="PanelIRS" style="display:block;"></div> //With the css control when show or hide it.
   
   At the end of the HTML insert this code <br>
   
