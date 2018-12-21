@@ -1,38 +1,36 @@
 # SummaTRON-API
 API de acceso al sistema de identificación creada por SummaTRON, tipo 2FA y basado en el Blockchain de TRON
 
-Para incorporar el API debe incluir las instrucciones
+For implementing the API, you must to insert following lines
 
-En el  HEAD <br>
+In the HEAD <br>
 
 	<script src="qrcode.min.js" ></script> // es un desarrollo de https://github.com/davidshimjs/qrcodejs
 	<script src="/api/js/apisummatron.js" ></script><br>
 
-En en BODY en en el lugar donde quiera que aparezca los QR para realizar el control de entrada<br>
+In the BODY, in the place where you want to show the QR<br>
 
 	<div id="PanelPago" style="display:block;"></div> //Con el css se controla cuando debe estar visible y cuando no.
   
-  Al final del HTML se incorpora el código <br>
+  At the end of the HTML insert this code <br>
   
        <script>
-       $("#PanelPago").load("/api/PanelPago.html", function() {
+       $("#PanelIRS").load("/api/PanelIRS.html", function() {
        sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-       $("#Propietario").text(sCuenta);
-       Verificar(sCuenta,"ES","FUNCION a EJECUTAR");
+       Verificar(sCuenta,"ES","FUNCTION to EXECUTE");
        });
        </script>
   <br>
   <p>
-  Con este script se muestra el QR y se indica cual es la cuenta TRON de la empresa.
-  "ES" o "EN", indica el idioma de los mensajes.
-  En FUNCION a EJECUTAR de debe indicar el nombre de la funcion que se ejecutará cuando la identificación finalice, se devuelve como
-  parámetro la cuenta TRON o un string vacio, si tras 60 segundos ha se ha producido la identificación.
+  This script show the QR who has the TRON account of the company.
+  "ES" o "EN", select the languaje of the messages.
+  "FUNCTION to EXECUTE" is the name of the function that the script will execute when the identification process finish. This process return the account of the sender or a string empty, if after 60 seconds there isn't identification.
   </p>
   <p>
-  <b>MUY IMPORTANTE</b><br><br>
-  Para poder utilizar SummaTRON-API debe registrar el nombre de la empresa que será usado como parte de la clave que se envía en el proceso de identificacion.
-  Este proceso se realiza enviando 1 SummaTRON desde la cuenta de la empresa, la misma que luego se debe incluir en la llamada a la función Verificar(), a la cuenta del proyecto: <b>TFQwLDzUvEc99ktd3TvUc9g3uATGmX2fS7</b>, y es muy importante, indicar en la Descripcion el nombre de la empresa, sugerimos que sea el dominio sin www ni .com.
+  <b>VERY IMPORTANT</b><br><br>
+  To be able to use SummaTRON-API you must register the name of the company that will be used as part of the key that is sent in the identification process.
+   This process is done by sending 1 SummaTRON from the company's account, which must then be included in the call to the Verify () function, to the project account: <b> TFQwLDzUvEc99ktd3TvUc9g3uATGmX2fS7 </b>, and it is also very important, to indicate in the description the name of the company, we suggest that it be the domain name.
   <br>
-  Puedes comprar el Summatron en https://tronscan.org/#/tokens/list?search=IdTronix, 1 TRX = 1 SummaTRON.
-  Puedes comprar IdTronix en https://tronscan.org/#/tokens/list?search=IdTronix, 1 TRX = 1000 IdTronix.
+  You can buy SummaTRON in https://tronscan.org/#/tokens/list?search=SummaTRON, 1 TRX = 1 SummaTRON.
+  You can buy IdTronix en https://tronscan.org/#/tokens/list?search=IdTronix, 1 TRX = 1000 IdTronix.
   <p>
