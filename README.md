@@ -1,5 +1,5 @@
 # SummaTRON-API
-API for identification, data registration or signing of documents, the identification is like 2FA, and all is supported by TRON Blockchain.
+API for identification, personal data registration or signing of documents, the identification is like 2FA, and all is supported by TRON Blockchain.
 
 For implementing the API, you must to insert following lines:
 
