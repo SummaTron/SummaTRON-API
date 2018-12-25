@@ -5,7 +5,7 @@ For implementing the API, you must to insert following lines:
 
 In the HEAD <br>
 
-	<script src="qrcode.min.js" ></script> // es un desarrollo de https://github.com/davidshimjs/qrcodejs
+	<script src="jquery-qrcode-0.14.0.min.js" ></script> 
 	<script src="/api/js/apisummatron.js" ></script><br>
 
 In the BODY, in the place where you want to show the QR<br>
