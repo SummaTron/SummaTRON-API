@@ -31,4 +31,4 @@ In the BODY, in the place where you want to show the QR<br>
   To be able to use SummaTRON-API you must register the name of the company that will be used as part of the key that is sent in the identification process.
    This process is done by sending 1 SummaTRON from the company's account, which must then be included in the call to the Verify () function, to the project account: <b> TFQwLDzUvEc99ktd3TvUc9g3uATGmX2fS7 </b>, and it is also very important, to indicate in the description the name of the company, we suggest that it be the domain name.
   <br>
-You can get all the information abour SummaTRON-API proyect in our <a src="https://github.com/SummaTron/SummaTRON-API/blob/master/SummaTRON_API_WhitePaper_EN.pdf">whitepaper</a>.
+You can get all the information abour SummaTRON-API proyect in our <a src="https://github.com/SummaTron/SummaTRON-API/blob/master/SummaTRON_API_WhitePaper_EN.pdf" target="blank">whitepaper</a>.
