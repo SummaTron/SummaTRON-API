@@ -31,6 +31,3 @@ In the BODY, in the place where you want to show the QR<br>
   To be able to use SummaTRON-API you must register the name of the company that will be used as part of the key that is sent in the identification process.
    This process is done by sending 1 SummaTRON from the company's account, which must then be included in the call to the Verify () function, to the project account: <b> TFQwLDzUvEc99ktd3TvUc9g3uATGmX2fS7 </b>, and it is also very important, to indicate in the description the name of the company, we suggest that it be the domain name.
   <br>
-  You can buy SummaTRON in https://tronscan.org/#/tokens/list?search=SummaTRON, 1 TRX = 1 SummaTRON.
-  You can buy IdTronix en https://tronscan.org/#/tokens/list?search=IdTronix, 1 TRX = 1000 IdTronix.
-  <p>
