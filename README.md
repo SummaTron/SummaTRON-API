@@ -8,17 +8,17 @@ In the HEAD <br>
 	<script src="jquery-qrcode-0.14.0.min.js" ></script> 
 	<script src="/api/js/apisummatron.js" ></script><br>
 
-In the BODY, in the place where you want to show the QR<br>
+In the BODY, in the place where you want to show the QR
 
 	<div id="PanelIRS" style="display:block;"></div> //With the css control when show or hide it.
   
   At the end of the HTML insert this code <br>
   
        <script>
-       $("#PanelIRS").load("/api/PanelIRS.html", function() {
-       sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-       Verificar(sCuenta,"ES","FUNCTION to EXECUTE");
-       });
+	       $("#PanelIRS").load("/api/PanelIRS.html", function() {
+	       sCuenta = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	       Verificar(sCuenta,"ES","FUNCTION to EXECUTE");
+	       });
        </script>
   <br>
   <p>
