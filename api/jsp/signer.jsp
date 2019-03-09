@@ -14,12 +14,13 @@
 <%@ page import="java.util.Random" %>
 <%@ page import="com.itextpdf.text.*, com.itextpdf.text.pdf.*"%>
 <%@include file="reenviar.jsp" %>  
+<%@include file="Utils.jsp" %>
 
 <%
 String sCuenta= request.getParameter("Cuenta").replaceAll("'","");
 String sDescripcion = request.getParameter("Descripcion").replaceAll("'","");
-String sUrlTransacciones= "https://api.tronscan.org/api/transaction?sort=-timestamp&count=true&limit=3&start=0&tokenName=SummaTRON&address="+sCuenta;
-String sUrlHash= "https://wlcyapi.tronscan.org/api/transaction/";
+String sUrlTransacciones= "https://apilist.tronscan.org/api/transaction?sort=-timestamp&limit=3&token=SummaTRON&address="+sCuenta;
+String sUrlHash= "https://api.trongrid.io/wallet/gettransactionbyid?value=";
 String sId="", sName="", sSurname="", sEmail="", sFecha="";
 String sPath ="C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 9.0\\webapps\\root\\pdfs\\";
 String sFichero = "";
@@ -34,7 +35,7 @@ Integer year=0, month=0, day=0, hour=0, min=0, sec=0;
 	String [] aZonas, aTransacciones;
 	InputStream input;
 	Reader reader;
-	JSONObject obj, obj1, oCifrado;
+	JSONObject obj, obj1, objh, oCifrado, oDatos;
 	JSONArray arr;
 	System.out.println("Entro en Signer:" + sCuenta+ " " + sDescripcion);
 	// Localiza la última transaccion
@@ -61,20 +62,18 @@ Integer year=0, month=0, day=0, hour=0, min=0, sec=0;
 			{
 				try
 				{
-					sHash = sFrom = arr.getJSONObject(i).getString("hash");	
-					sFrom = arr.getJSONObject(i).getString("ownerAddress");	
-					//sToken = arr.getJSONObject(i).getString("tokenName");					
-					//sAmount = arr.getJSONObject(i).getString("amount");
-					sDataCifrado = arr.getJSONObject(i).getString("data");
-					sDataCifrado = java.net.URLDecoder.decode(sDataCifrado, "UTF-8");
-					sTimestamp = arr.getJSONObject(i).getString("timestamp");	
+					sHash = arr.getJSONObject(i).getString("hash");
+					sTimestamp = arr.getJSONObject(i).getString("timestamp");
+					oDatos = Get_Datos(sUrlHash+sHash);
+					sDataCifrado = oDatos.getString("Data");
+					sFrom = oDatos.getString("From");
+					sDataCifrado = Limpiar(sDataCifrado);
+						
 					oCifrado = new JSONObject(sDataCifrado);
 					sData = oCifrado.getString("data");
-					sData = sData.replaceAll(" Sent from TronWallet","");
 					sCipher = oCifrado.getString("cipher");
 					//System.out.println("Data="+sData);
 					//System.out.println("Cipher="+sCipher);
-					sTimestamp = arr.getJSONObject(i).getString("timestamp");
 					
 					long timestampLong = Long.parseLong(sTimestamp);
 					Date d = new Date(timestampLong);

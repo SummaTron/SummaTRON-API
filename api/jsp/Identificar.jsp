@@ -12,29 +12,27 @@
 <%@ page import="org.jsoup.Connection" %>
 <%@ page import="org.json.*" %>
 <%@ page import="java.util.Random" %>
-
+<%@include file="Utils.jsp" %> 
 
 <%
+
 String sCuenta= request.getParameter("Cuenta").replaceAll("'","");
 String sDescripcion = request.getParameter("Descripcion").replaceAll("'","");
-
-String sUrlTransacciones= "https://api.tronscan.org/api/transaction?sort=-timestamp&limit=3&token=IdTronix&address="+sCuenta;
-//String sDate_Start = Long.toString(System.currentTimeMillis()-10000000);
-//String sUrlTransacciones= "https://wlcyapi.tronscan.org/api/transfer?token=IdTronix&to="+sCuenta+"&date_start="+sDate_Start;
-//String sUrlHash= "https://wlcyapi.tronscan.org/api/transaction/";
+String sUrlTransacciones= "https://apilist.tronscan.org/api/transaction?sort=-timestamp&limit=3&token=IdTronix&address="+sCuenta;
+String sUrlHash= "https://api.trongrid.io/wallet/gettransactionbyid?value=";
 	Integer i=0, k=0, nTope=0, nIni=0, nFin=0, nVeces=0;
 	String sRespuesta="", sLista="", sTransacciones = "", sStatus="", sT="", sAccount="", sSaldo="", sName="", sTokenName="", sToken="";
-	String sBalance="", sHash="", sData="", sTo="", sFrom="", sAmount="", sTimestamp;
+	String sBalance="", sHash="", sData="", sTo="", sFrom="", sAmount="", sTimestamp="";
 	int intValueOfChar;
 	String [] aZonas, aTransacciones;
 	sLista = "{'From':'Error','Amount':'Error','Token':'Error','Data':'Error'}";
 	InputStream input;
 	Reader reader;
-	JSONObject obj;
+	JSONObject oDatos, obj, obj1;
 	JSONArray arr;
-	System.out.println("Entro en Identificar:" + sCuenta + " " + sDescripcion);
+	System.out.print("Entro en Identificar:" + sCuenta + " " + sDescripcion);
 	// Localiza la última transaccion
-	System.out.println(sUrlTransacciones);
+	System.out.println("URL: "+sUrlTransacciones);
 	// Localiza la última transaccion
 	while (k<60)	
 	{
@@ -47,6 +45,7 @@ String sUrlTransacciones= "https://api.tronscan.org/api/transaction?sort=-timest
 				sTransacciones += (char) intValueOfChar;
 			}
 			reader.close();
+			//System.out.println("Apilist: "+sTransacciones);
 			obj = new JSONObject(sTransacciones);
 			arr = obj.getJSONArray("data");
 			i=0;
@@ -56,24 +55,15 @@ String sUrlTransacciones= "https://api.tronscan.org/api/transaction?sort=-timest
 			{	
 				try
 				{
-					sTo = arr.getJSONObject(i).getString("toAddress");
-					sFrom = arr.getJSONObject(i).getString("ownerAddress");
-					sTimestamp = arr.getJSONObject(i).getString("timestamp");
+					sHash = sUrlHash+arr.getJSONObject(i).getString("hash");
+					sTimestamp =arr.getJSONObject(i).getString("timestamp");
+					oDatos = Get_Datos(sHash);
+					sData = oDatos.getString("Data");
+					sFrom = oDatos.getString("From");
 					
-					sData = arr.getJSONObject(i).getString("data");	
-					if (sData.indexOf("-")<0)
-					{sData = hexToAscii(arr.getJSONObject(i).getString("data"));}	
-					
-					sData = sData.replaceAll(" Sent from TronWallet","");
-					
-
+					//System.out.println("Data: "+sData);
 					Long nDif=System.currentTimeMillis()-Long.valueOf(sTimestamp);
-					//System.out.println("Data:" + sData + " = "+sDescripcion + " Dif:"+nDif);
-					//System.out.println(sData.equals(sDescripcion));
-					//System.out.print(i) ;
-					//System.out.print ("  " + sData + " "+ sDescripcion + " ");
-					//System.out.println (nDif);
-					
+
 					if (nDif<60000)
 					{
 						if (sData.equals(sDescripcion))
